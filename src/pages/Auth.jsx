@@ -36,6 +36,7 @@ const Auth = ({ handleGetUserData, navigate }) => {
         backgroundColor: "white",
       }}
     >
+      <p>Cafe Latino</p>
       <FormControl sx={{ width: "25ch" }}>
         <OutlinedInput
           placeholder="Username"

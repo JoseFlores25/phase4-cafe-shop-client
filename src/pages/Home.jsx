@@ -38,6 +38,7 @@ const Home = ({ handleGetUserData, navigate }) => {
         // },
       }}
     >
+      <p>Cafe Latino</p>
       <FormControl sx={{ width: "25ch" }}>
         <OutlinedInput
           placeholder="username"
