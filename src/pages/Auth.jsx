@@ -16,7 +16,7 @@ const Auth = ({ handleGetUserData, navigate }) => {
 
   const handleSignup = async () => {
     try {
-      const { data } = await axios.post("http://localhost:8000/user", {
+      const { data } = await axios.post("http://localhost:8000/users", {
         ...userInfo,
       });
 
