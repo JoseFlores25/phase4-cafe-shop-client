@@ -97,7 +97,6 @@ function App() {
     try {
       const { data } = await axios.put("http://localhost:8000/user/coffees", {
         ...product,
-        user_id: currentUser?.id,
       });
       setCoffees(data);
     } catch (error) {
