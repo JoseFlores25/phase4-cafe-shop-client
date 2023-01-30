@@ -30,18 +30,16 @@ function App() {
       );
       setIsAuthenticated(true);
       setCurrentUser(data);
-      await getUserMenu(user_id);
+      await getUserMenu();
       navigate("/menu");
     } catch (error) {
       alert(error.message);
     }
   };
 
-  const getUserMenu = async (user_id) => {
+  const getUserMenu = async () => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8000/user/coffees?user_id=${user_id}`
-      );
+      const { data } = await axios.get(`http://localhost:8000/user/coffees`);
       setCoffees(data);
     } catch (error) {
       alert(error.message);
@@ -63,7 +61,7 @@ function App() {
     try {
       const { data } = await axios.post(
         "http://localhost:8000/user/coffees/remove",
-        { id, user_id: currentUser?.id }
+        { id }
       );
       setCoffees(data);
       console.log("[debug]", data, "deleted data");
@@ -109,7 +107,7 @@ function App() {
 
   const handleGetUserData = async (user) => {
     setCurrentUser(user);
-    await getUserMenu(user.id);
+    await getUserMenu();
     setIsAuthenticated(true);
   };
 

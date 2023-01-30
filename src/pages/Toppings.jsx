@@ -20,7 +20,7 @@ const Toppings = ({ handleAddTopping }) => {
   const handleGetRatings = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/feedback?coffee_id=${item?.id}&user_id=${currentUser?.id}`
+        `http://localhost:8000/feedback?coffee_id=${item?.id}`
       );
       setRatings(data);
     } catch (error) {}
