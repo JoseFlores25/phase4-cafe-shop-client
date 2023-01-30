@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, OutlinedInput } from "@mui/material";
+import { Box, Button, FormControl, OutlinedInput, Typography } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 
@@ -30,15 +30,10 @@ const Home = ({ handleGetUserData, navigate }) => {
     <Box
       sx={{
         width: "100vw",
-        height: "100vh",
+        height: "30vh",
         backgroundColor: "white",
-        // "&:hover": {
-        //   backgroundColor: "primary.main",
-        //   opacity: [0.9, 0.8, 0.7],
-        // },
       }}
     >
-      <p>Cafe Latino</p>
       <FormControl sx={{ width: "25ch" }}>
         <OutlinedInput
           placeholder="username"
@@ -51,6 +46,20 @@ const Home = ({ handleGetUserData, navigate }) => {
         <Button onClick={handleLogin}>Login</Button>
         <Button onClick={() => navigate("/authentication")}>Sign-up</Button>
       </FormControl>
+      <Box
+      sx={{
+        width: "100vw",
+        height: "80vh",
+        backgroundColor: "black",
+      }}
+    >
+      <Typography style={{color: 'white', fontSize: 40}}>
+        Welcome to coffee maker!
+      </Typography>
+      <Typography style={{color: 'tomato', fontSize: 40}}>
+        Where you get to create your coffee for the world to see!
+      </Typography>
+      </Box>
     </Box>
   );
 };
