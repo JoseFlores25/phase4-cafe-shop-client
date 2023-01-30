@@ -52,7 +52,6 @@ function App() {
     try {
       const { data } = await axios.post("http://localhost:8000/user/coffees", {
         ...payload,
-        user_id: currentUser?.id,
       });
       setCoffees(data);
     } catch (error) {
