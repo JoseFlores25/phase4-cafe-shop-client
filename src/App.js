@@ -33,7 +33,7 @@ function App() {
       await getUserMenu();
       navigate("/menu");
     } catch (error) {
-      alert(error.message);
+      alert("Sorry, something went wrong!");
     }
   };
 
@@ -42,7 +42,7 @@ function App() {
       const { data } = await axios.get(`http://localhost:8000/user/coffees`);
       setCoffees(data);
     } catch (error) {
-      alert(error.message);
+      alert("Sorry, something went wrong!");
     }
   };
 
@@ -53,7 +53,7 @@ function App() {
       });
       setCoffees(data);
     } catch (error) {
-      alert(error.message);
+      alert("Sorry, something went wrong!");
     }
   };
 
@@ -66,7 +66,7 @@ function App() {
       setCoffees(data);
       console.log("[debug]", data, "deleted data");
     } catch (error) {
-      alert(error.message);
+      alert("Sorry, something went wrong!");
     }
   };
 
@@ -75,7 +75,7 @@ function App() {
       await axios.post("http://localhost:8000/topping", { ...payload });
       await checkUserSession();
     } catch (error) {
-      alert(error.message);
+      alert("Sorry, something went wrong!");
     }
   };
 
@@ -87,7 +87,7 @@ function App() {
       });
       await checkUserSession();
     } catch (error) {
-      alert(error.message);
+      alert("Sorry, something went wrong!");
     }
   };
 
@@ -98,7 +98,7 @@ function App() {
       });
       setCoffees(data);
     } catch (error) {
-      alert(error.message);
+      alert("Sorry, something went wrong!");
     }
   };
   useEffect(() => {

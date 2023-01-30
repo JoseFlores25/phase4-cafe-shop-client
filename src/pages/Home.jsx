@@ -22,7 +22,7 @@ const Home = ({ handleGetUserData, navigate }) => {
       handleGetUserData(data);
       navigate("/menu");
     } catch (error) {
-      alert("Please create a account!");
+      alert("Sorry, something went wrong!");
     }
   };
 

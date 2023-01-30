@@ -24,7 +24,7 @@ const Auth = ({ handleGetUserData, navigate }) => {
       handleGetUserData(data);
       navigate("/menu");
     } catch (error) {
-      alert(error.message);
+      alert("Sorry, something went wrong!");
     }
   };
 
