@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 const Order = ({ navigate, handleEditProduct, handleAddCoffee }) => {
   const { state } = useLocation();
   const { method, item } = state || {};
-  const [coffee, setCoffee] = useState({ name: "", price: "" });
+  const [coffee, setCoffee] = useState({ name: "", price: "", store: '' });
 
   useEffect(() => {
     if (item) setCoffee(item);
@@ -45,6 +45,11 @@ const Order = ({ navigate, handleEditProduct, handleAddCoffee }) => {
           placeholder="price"
           value={coffee.price}
           onChange={(e) => handleInput(e, "price")}
+        />
+        <OutlinedInput
+          placeholder="store name"
+          value={coffee.store}
+          onChange={(e) => handleInput(e, "store")}
         />
         <Button onClick={method === "update" ? updatCoffee : addCoffee}>
           <Typography>

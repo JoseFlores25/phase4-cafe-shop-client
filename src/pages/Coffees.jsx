@@ -40,8 +40,9 @@ const Coffee = ({
             flexDirection: "column",
           }}
         >
-          <Typography>{item?.name}</Typography>
-          <Typography>${item?.price}</Typography>
+          <Typography>Coffee: {item?.name}</Typography>
+          <Typography>Price: ${item?.price}</Typography>
+          <Typography>Store: {item?.store}</Typography>
           <Button onClick={() => handleDeleteCoffee(item?.id)}>
             <Typography>Delete</Typography>
           </Button>
