@@ -13,6 +13,7 @@ import Order from "./pages/Order";
 import axios from "axios";
 import Toppings from "./pages/Toppings";
 import Feedback from "./pages/Feedback";
+import FeedbackList from "./pages/FeedbackList";
 
 function App() {
   const navigate = useNavigate();
@@ -165,7 +166,7 @@ function App() {
         />
         <Route
           exact
-          path="/topping"
+          path="/toppings"
           element={
             <Toppings
               handleAddTopping={handleAddTopping}
@@ -176,7 +177,18 @@ function App() {
         />
         <Route
           exact
-          path="/feedbacks"
+          path="/reviews"
+          element={
+            <FeedbackList
+              handleAddTopping={handleAddTopping}
+              isAuthenticated={isAuthenticated}
+              navigate={navigate}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/feedback"
           element={
             <Feedback
               handleAddFeedback={handleAddFeedback}

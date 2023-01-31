@@ -2,6 +2,7 @@ import React from "react";
 import { Typography, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect } from "react";
+import CoffeeIcon from "@mui/icons-material/Coffee";
 const Coffee = ({
   coffees,
   currentUser,
@@ -23,7 +24,10 @@ const Coffee = ({
       <Button
         onClick={() => navigate("/order", { state: { method: "create" } })}
       >
-        <Typography>Add To Menu</Typography>
+        <CoffeeIcon style={{ color: "black" }} />
+        <Typography style={{ color: "black", fontWeight: "bold" }}>
+          Add To Menu
+        </Typography>
       </Button>
       {coffees.map((item) => (
         <Box
@@ -31,8 +35,8 @@ const Coffee = ({
             borderRadius: 20,
             marginBottom: 10,
             alignSelf: "center",
-            backgroundColor: "tomato",
-            width: 200,
+            backgroundColor: "black",
+            width: "50vw",
             paddingBottom: 10,
             paddingTop: 20,
             justifyContent: "center",
@@ -40,20 +44,34 @@ const Coffee = ({
             flexDirection: "column",
           }}
         >
-          <Typography>Coffee: {item?.name}</Typography>
-          <Typography>Price: ${item?.price}</Typography>
-          <Typography>Store: {item?.store}</Typography>
+          <Typography style={{ color: "white", fontSize: 40 }}>
+            {item?.name}
+          </Typography>
+          <Typography style={{ color: "white", fontSize: 20 }}>
+            ${item?.price}
+          </Typography>
+          <Typography
+            style={{ color: "white", fontSize: 14, marginBottom: 20 }}
+          >
+            Sold at: {item?.store}
+          </Typography>
           {/* <Button onClick={() => handleDeleteCoffee(item?.id)}>
             <Typography>Delete</Typography>
           </Button> */}
           <Button
             onClick={() =>
-              navigate("/topping", {
+              navigate("/toppings", {
                 state: { item: item },
               })
             }
+            style={{
+              backgroundColor: "gray",
+              margin: 8,
+            }}
           >
-            <Typography>Add topping</Typography>
+            <Typography style={{ color: "white", fontSize: 20 }}>
+              Add topping
+            </Typography>
           </Button>
           <Button
             onClick={() =>
@@ -61,26 +79,59 @@ const Coffee = ({
                 state: { method: "update", item: item },
               })
             }
+            style={{
+              backgroundColor: "gray",
+              margin: 8,
+            }}
           >
-            <Typography>Edit</Typography>
+            <Typography style={{ color: "white", fontSize: 20 }}>
+              Edit
+            </Typography>
           </Button>
           <Button
             onClick={() =>
-              navigate("/feedbacks", {
+              navigate("/feedback", {
                 state: { method: "update", item: item },
               })
             }
+            style={{
+              backgroundColor: "gray",
+              margin: 8,
+            }}
           >
-            <Typography>Leave Feedback</Typography>
+            <Typography style={{ color: "white", fontSize: 20 }}>
+              Leave Feedback
+            </Typography>
           </Button>
           <Button
             onClick={() =>
-              navigate("/topping", {
+              navigate("/reviews", {
                 state: { method: "see-more-details", item, currentUser },
               })
             }
+            style={{
+              backgroundColor: "gray",
+              margin: 8,
+            }}
           >
-            <Typography>See more details</Typography>
+            <Typography style={{ fontSize: 12, color: "white" }}>
+              Reviews
+            </Typography>
+          </Button>
+          <Button
+            onClick={() =>
+              navigate("/toppings", {
+                state: { method: "see-more-details", item, currentUser },
+              })
+            }
+            style={{
+              backgroundColor: "gray",
+              margin: 8,
+            }}
+          >
+            <Typography style={{ fontSize: 12, color: "white" }}>
+              my toppings
+            </Typography>
           </Button>
         </Box>
       ))}

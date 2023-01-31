@@ -1,41 +1,44 @@
-import {
-  Typography,
-  Box,
-  FormControl,
-  OutlinedInput,
-  Button,
-} from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-const Toppings = ({ handleAddTopping }) => {
-  const [name, setName] = useState("");
-  const [toppings, setTopppings] = useState([]);
+const FeedbackList = () => {
+  const [ratings, setRatings] = useState([]);
   const { state } = useLocation();
   const { item, method } = state || {};
-
-  const handleGetToppings = async () => {
+  const user_id = +localStorage.getItem("user_id");
+  const handleGetRatings = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/topping?coffee_id=${item?.id}`
+        `http://localhost:8000/feedbacks?coffee_id=${item?.id}`
       );
-      setTopppings(data);
+      setRatings(data);
     } catch (error) {}
+  };
+
+  const handleDeleteFeedback = async (feedback) => {
+    console.log("[debug]", feedback, "feedback");
+    try {
+      const { data } = await axios.post(
+        "http://localhost:8000/feedbacks/remove",
+        { ...feedback, user_id }
+      );
+
+      setRatings(data);
+    } catch (err) {
+      alert("Sorry, this feedback does not belong to you!");
+    }
   };
 
   useEffect(() => {
     if (method === "see-more-details") {
-      handleGetToppings();
+      handleGetRatings();
     }
   }, []);
 
-  const addTopping = () => {
-    handleAddTopping({ name, coffee_id: item.id });
-  };
-
-  return method === "see-more-details" ? (
+  return (
     <Box
       sx={{
         width: "100vw",
@@ -45,7 +48,7 @@ const Toppings = ({ handleAddTopping }) => {
         flexDirection: "column",
       }}
     >
-      {toppings?.map((item) => (
+      {ratings?.map((item) => (
         <Box
           style={{
             backgroundColor: "black",
@@ -68,31 +71,21 @@ const Toppings = ({ handleAddTopping }) => {
               letterSpacing: 1.1,
             }}
           >
-            {item?.name}
+            {item?.title}
           </Typography>
+          <Typography style={{ color: "white", fontSize: "300", fontSize: 14 }}>
+            {item?.description}
+          </Typography>
+          <Button
+            style={{ backgroundColor: "gray", color: "white" }}
+            onClick={() => handleDeleteFeedback(item)}
+          >
+            Delete
+          </Button>
         </Box>
       ))}
-    </Box>
-  ) : (
-    <Box
-      sx={{
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: "white",
-      }}
-    >
-      <FormControl sx={{ width: "25ch" }}>
-        <OutlinedInput
-          placeholder="name"
-          //   value={coffee.name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <Button onClick={addTopping}>
-          <Typography>Add topping</Typography>
-        </Button>
-      </FormControl>
     </Box>
   );
 };
 
-export default Toppings;
+export default FeedbackList;

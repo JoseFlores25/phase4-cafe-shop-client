@@ -16,20 +16,23 @@ const Nav = ({ currentUser, navigate, logout }) => {
         backgroundColor: "black",
         alignItems: "center",
         justifyContent: "center",
+        marginBottom: 5,
       }}
     >
-      <Typography
-        variant="h1"
-        component="h2"
-        style={{ color: "white", fontSize: 40 }}
-      >
-        {currentUser ? currentUser?.username : "no user!"}
-      </Typography>
-      {currentUser?.username && (
-        <Button onClick={handleLogout}>
-          <Typography>Logout</Typography>
-        </Button>
-      )}
+      <Box>
+        <Typography
+          variant="h1"
+          component="h2"
+          style={{ color: "white", fontSize: 40 }}
+        >
+          {currentUser ? currentUser?.username : "no user!"}
+        </Typography>
+        {currentUser?.username && (
+          <Button onClick={handleLogout}>
+            <Typography style={{ color: "white" }}>Logout</Typography>
+          </Button>
+        )}
+      </Box>
     </Box>
   );
 };
