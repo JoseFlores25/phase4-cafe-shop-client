@@ -1,6 +1,6 @@
 import { Box, Button, FormControl, OutlinedInput } from "@mui/material";
 import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Auth = ({ handleGetUserData, navigate }) => {
   const [userInfo, setUserInfo] = useState({
@@ -43,6 +43,7 @@ const Auth = ({ handleGetUserData, navigate }) => {
           onChange={(e) => handleUserInfo(e, "username")}
         />
         <OutlinedInput
+          type="password"
           placeholder="Password"
           onChange={(e) => handleUserInfo(e, "password")}
         />

@@ -43,9 +43,9 @@ const Coffee = ({
           <Typography>Coffee: {item?.name}</Typography>
           <Typography>Price: ${item?.price}</Typography>
           <Typography>Store: {item?.store}</Typography>
-          <Button onClick={() => handleDeleteCoffee(item?.id)}>
+          {/* <Button onClick={() => handleDeleteCoffee(item?.id)}>
             <Typography>Delete</Typography>
-          </Button>
+          </Button> */}
           <Button
             onClick={() =>
               navigate("/topping", {
@@ -66,7 +66,7 @@ const Coffee = ({
           </Button>
           <Button
             onClick={() =>
-              navigate("/feedback", {
+              navigate("/feedbacks", {
                 state: { method: "update", item: item },
               })
             }

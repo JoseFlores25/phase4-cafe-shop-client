@@ -1,6 +1,12 @@
-import { Box, Button, FormControl, OutlinedInput, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  OutlinedInput,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Home = ({ handleGetUserData, navigate }) => {
   const [userInfo, setUserInfo] = useState({ username: "", password: "" });
@@ -40,6 +46,7 @@ const Home = ({ handleGetUserData, navigate }) => {
           onChange={(e) => handleUserInfo(e, "username")}
         />
         <OutlinedInput
+          type="password"
           placeholder="Password"
           onChange={(e) => handleUserInfo(e, "password")}
         />
@@ -47,18 +54,19 @@ const Home = ({ handleGetUserData, navigate }) => {
         <Button onClick={() => navigate("/authentication")}>Sign-up</Button>
       </FormControl>
       <Box
-      sx={{
-        width: "100vw",
-        height: "80vh",
-        backgroundColor: "black",
-      }}
-    >
-      <Typography style={{color: 'white', fontSize: 40}}>
-        Welcome to coffee maker!
-      </Typography>
-      <Typography style={{color: 'tomato', fontSize: 40}}>
-        Where you get to create your coffee for the world to see!
-      </Typography>
+        sx={{
+          width: "100vw",
+          height: "80vh",
+          backgroundColor: "black",
+        }}
+      >
+        <Typography style={{ color: "white", fontSize: 40 }}>
+          Welcome to coffee critic!
+        </Typography>
+        <Typography style={{ color: "tomato", fontSize: 40 }}>
+          This is a website where individuel could come and give they opinion of
+          coffee!!
+        </Typography>
       </Box>
     </Box>
   );

@@ -19,7 +19,6 @@ function App() {
   const [coffees, setCoffees] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   const checkUserSession = async () => {
     try {
       const user_id = localStorage.getItem("user_id");
@@ -81,7 +80,7 @@ function App() {
 
   const handleAddFeedback = async (payload) => {
     try {
-      await axios.post("http://localhost:8000/feedback", {
+      await axios.post("http://localhost:8000/feedbacks", {
         ...payload,
         user_id: currentUser?.id,
       });
@@ -177,7 +176,7 @@ function App() {
         />
         <Route
           exact
-          path="/feedback"
+          path="/feedbacks"
           element={
             <Feedback
               handleAddFeedback={handleAddFeedback}

@@ -16,11 +16,11 @@ const Toppings = ({ handleAddTopping }) => {
   const [ratings, setRatings] = useState([]);
   const { state } = useLocation();
   const { item, method, currentUser } = state || {};
-
+  const user_id = +localStorage.getItem("user_id");
   const handleGetRatings = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/feedback?coffee_id=${item?.id}`
+        `http://localhost:8000/feedbacks?coffee_id=${item?.id}`
       );
       setRatings(data);
     } catch (error) {}
@@ -33,6 +33,20 @@ const Toppings = ({ handleAddTopping }) => {
       );
       setTopppings(data);
     } catch (error) {}
+  };
+
+  const handleDeleteFeedback = async (feedback) => {
+    console.log("[debug]", feedback, "feedback");
+    try {
+      const { data } = await axios.post(
+        "http://localhost:8000/feedbacks/remove",
+        { ...feedback, user_id }
+      );
+
+      setRatings(data);
+    } catch (err) {
+      alert("Sorry, this feedback does not belong to you!");
+    }
   };
 
   useEffect(() => {
@@ -63,6 +77,7 @@ const Toppings = ({ handleAddTopping }) => {
         <Box>
           <Typography>{item?.title}</Typography>
           <Typography>{item?.description}</Typography>
+          <Button onClick={() => handleDeleteFeedback(item)}>Delete</Button>
         </Box>
       ))}
     </Box>
