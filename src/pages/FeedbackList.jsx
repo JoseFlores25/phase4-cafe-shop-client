@@ -19,16 +19,21 @@ const FeedbackList = () => {
   };
 
   const handleDeleteFeedback = async (feedback) => {
-    console.log("[debug]", feedback, "feedback");
+    if (feedback?.user_id !== user_id) {
+      alert("Sorry, this feedback does not belong to you!");
+      return;
+    }
+
     try {
-      const { data } = await axios.post(
-        "http://localhost:8000/feedbacks/remove",
-        { ...feedback, user_id }
+      const { data } = await axios.delete(
+        `http://localhost:8000/feedbacks/${feedback.id}`
       );
 
-      setRatings(data);
+      handleGetRatings();
     } catch (err) {
-      alert("Sorry, this feedback does not belong to you!");
+      alert(
+        "Sorry, could not delete this feedback, maybe you did not leave this feedback?"
+      );
     }
   };
 

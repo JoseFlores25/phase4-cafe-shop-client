@@ -39,7 +39,7 @@ function App() {
 
   const getUserMenu = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:8000/user/coffees`);
+      const { data } = await axios.get(`http://localhost:8000/coffees`);
       setCoffees(data);
     } catch (error) {
       alert("Sorry, something went wrong!");
@@ -48,7 +48,7 @@ function App() {
 
   const handleAddCoffee = async (payload) => {
     try {
-      const { data } = await axios.post("http://localhost:8000/user/coffees", {
+      const { data } = await axios.post("http://localhost:8000/coffees", {
         ...payload,
       });
       setCoffees(data);
@@ -60,7 +60,7 @@ function App() {
   const handleDeleteCoffee = async (id) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/user/coffees/remove",
+        "http://localhost:8000/coffees/remove",
         { id }
       );
       setCoffees(data);
@@ -72,7 +72,7 @@ function App() {
 
   const handleAddTopping = async (payload) => {
     try {
-      await axios.post("http://localhost:8000/topping", { ...payload });
+      await axios.post("http://localhost:8000/toppings", { ...payload });
       await checkUserSession();
     } catch (error) {
       alert("Sorry, something went wrong!");
@@ -93,9 +93,12 @@ function App() {
 
   const handleEditProduct = async (product) => {
     try {
-      const { data } = await axios.put("http://localhost:8000/user/coffees", {
-        ...product,
-      });
+      const { data } = await axios.put(
+        `http://localhost:8000/coffees/${product.id}`,
+        {
+          ...product,
+        }
+      );
       setCoffees(data);
     } catch (error) {
       alert("Sorry, something went wrong!");

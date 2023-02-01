@@ -19,7 +19,7 @@ const Toppings = ({ handleAddTopping }) => {
   const handleGetToppings = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/topping?coffee_id=${item?.id}`
+        `http://localhost:8000/toppings?coffee_id=${item?.id}`
       );
       setTopppings(data);
     } catch (error) {}
