@@ -24,7 +24,7 @@ const Auth = ({ handleGetUserData, navigate }) => {
       handleGetUserData(data);
       navigate("/menu");
     } catch (error) {
-      alert("Sorry, something went wrong!");
+      alert("Sorry, could not sign up, maybe try different email!");
     }
   };
 

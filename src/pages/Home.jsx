@@ -28,7 +28,7 @@ const Home = ({ handleGetUserData, navigate }) => {
       handleGetUserData(data);
       navigate("/menu");
     } catch (error) {
-      alert("Sorry, something went wrong!");
+      alert("Sorry, your credentials were incorrect!");
     }
   };
 

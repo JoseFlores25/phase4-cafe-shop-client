@@ -32,7 +32,7 @@ const FeedbackList = () => {
       handleGetRatings();
     } catch (err) {
       alert(
-        "Sorry, could not delete this feedback, maybe you did not leave this feedback?"
+        "Sorry, could not delete this feedback, maybe you did not created it?"
       );
     }
   };
